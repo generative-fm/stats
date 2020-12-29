@@ -18,3 +18,7 @@ recordEmission({
   userId: 'alex',
 });
 ```
+
+## Endpoint
+
+Provide a `GFM_STATS_ENDPOINT` environment variable.

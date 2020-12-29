@@ -9,12 +9,12 @@ const storeUnsyncedEmission = (emission) =>
         .transaction(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME)
         .objectStore(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME, 'readwrite')
         .put(emission)
-        .then(() => true)
-        .catch((error) => {
-          console.error('Unable to store emission', error);
-          return false;
-        })
     )
+      .then(() => true)
+      .catch((error) => {
+        console.error('Unable to store emission', error);
+        return false;
+      })
   );
 
 export default storeUnsyncedEmission;

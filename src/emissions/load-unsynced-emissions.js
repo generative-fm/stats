@@ -9,10 +9,10 @@ const loadUnsyncedEmissions = () =>
         .transaction(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME)
         .objectStore(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME)
         .getAll()
-        .catch((error) => {
-          console.error('Unable to load emissions', error);
-        })
-    )
+    ).catch((error) => {
+      console.error('Unable to load emissions', error);
+      return [];
+    })
   );
 
 export default loadUnsyncedEmissions;
