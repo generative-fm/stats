@@ -1,0 +1,9 @@
+{
+  "extends": "@alexbainter/eslint-config/node",
+  "overrides": [
+    {
+      "files": ["rollup.config.js"],
+      "parserOptions": { "sourceType": "module" }
+    }
+  ]
+}

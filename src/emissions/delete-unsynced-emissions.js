@@ -1,0 +1,22 @@
+import { promisifyRequest } from '@alexbainter/indexed-db';
+import UNSYNCED_EMISSIONS_OBJECT_STORE_NAME from './unsynced-emissions-object-store-name';
+import openDb from './open-db';
+
+const deleteUnsyncedEmissions = (emissions) =>
+  openDb().then((db) => {
+    const objectStore = db
+      .transaction(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME)
+      .objectStore(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME, 'readwrite');
+    return Promise.all(
+      emissions.map((emission) =>
+        promisifyRequest(objectStore.delete(emission.emissionId))
+          .then(() => true)
+          .catch((error) => {
+            console.error('Unable to delete emission', error);
+            return false;
+          })
+      )
+    );
+  });
+
+export default deleteUnsyncedEmissions;
