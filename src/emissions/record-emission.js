@@ -15,9 +15,7 @@ const recordEmission = ({ startTime, endTime, pieceId, userId }) => {
     pieceId,
     userId,
   };
-  return storeUnsyncedEmission(emission).then(() => {
-    syncEmissions();
-  });
+  return storeUnsyncedEmission(emission).then(() => syncEmissions());
 };
 
 export default recordEmission;
