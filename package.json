@@ -1,6 +1,6 @@
 {
   "name": "@generative.fm/stats",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Used for measuring and loading metrics for Generative.fm generators.",
   "main": "dist/stats.cjs.js",
   "module": "dist/stats.esm.js",
