@@ -10,7 +10,9 @@
     "preversion": "npm run lint && npm run build",
     "postversion": "git push && git push --tags"
   },
-  "files": [],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/generative-fm/stats.git"
