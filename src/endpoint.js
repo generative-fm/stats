@@ -1,4 +1,3 @@
-const ENV_VAR = 'GFM_STATS_ENDPOINT';
-const endpoint = process.env[ENV_VAR];
+const endpoint = process.env.GFM_STATS_ENDPOINT;
 
 export default endpoint;

@@ -5,8 +5,8 @@ import openDb from './open-db';
 const deleteUnsyncedEmissions = (emissions) =>
   openDb().then((db) => {
     const objectStore = db
-      .transaction(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME)
-      .objectStore(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME, 'readwrite');
+      .transaction(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME, 'readwrite')
+      .objectStore(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME);
     return Promise.all(
       emissions.map((emission) =>
         promisifyRequest(objectStore.delete(emission.emissionId))

@@ -1,6 +1,6 @@
 import ENDPOINT from './endpoint';
 
-const FETCH_URL = `${location.protocol}//${ENDPOINT}/global/playtime`;
+const FETCH_URL = `${ENDPOINT}/global/playtime`;
 const CACHE_NAME = '@generative.fm/stats';
 const IS_CACHE_SUPPORTED = Boolean(caches);
 

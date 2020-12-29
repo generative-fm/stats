@@ -6,8 +6,8 @@ const storeUnsyncedEmission = (emission) =>
   openDb().then((db) =>
     promisifyRequest(
       db
-        .transaction(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME)
-        .objectStore(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME, 'readwrite')
+        .transaction(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME, 'readwrite')
+        .objectStore(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME)
         .put(emission)
     )
       .then(() => true)

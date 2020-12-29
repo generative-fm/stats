@@ -37,6 +37,7 @@
     "rollup": "^2.35.1"
   },
   "dependencies": {
+    "@alexbainter/indexed-db": "^0.1.1",
     "@babel/runtime": "^7.12.5",
     "uuid": "^8.3.2"
   }

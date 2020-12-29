@@ -2,7 +2,7 @@ import ENDPOINT from '../endpoint';
 import loadUnsyncedEmissions from './load-unsynced-emissions';
 import deleteUnsyncedEmissions from './delete-unsynced-emissions';
 
-const POST_URL = `${location.protocol}//${ENDPOINT}/emissions`;
+const POST_URL = `${ENDPOINT}/emissions`;
 const MAX_EMISSIONS_PER_REQUEST = 25;
 
 const postingEmissionIds = new Set();
