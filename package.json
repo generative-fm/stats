@@ -2,17 +2,15 @@
   "name": "@generative.fm/stats",
   "version": "0.1.2",
   "description": "Used for measuring and loading metrics for Generative.fm generators.",
-  "main": "stats.cjs.js",
-  "module": "stats.esm.js",
+  "main": "dist/stats.cjs.js",
+  "module": "dist/stats.esm.js",
   "scripts": {
     "lint": "eslint src",
     "build": "rollup -c",
     "preversion": "npm run lint && npm run build",
     "postversion": "git push && git push --tags"
   },
-  "files": [
-    "dist"
-  ],
+  "files": [],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/generative-fm/stats.git"
