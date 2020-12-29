@@ -19,7 +19,7 @@
     "url": "https://github.com/generative-fm/stats/issues"
   },
   "homepage": "https://github.com/generative-fm/stats#readme",
-  "publicConfig": {
+  "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
