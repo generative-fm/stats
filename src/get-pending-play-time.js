@@ -1,4 +1,4 @@
-import getPendingEmissions from './emission/get-pending-emissions';
+import getPendingEmissions from './emissions/get-pending-emissions';
 
 const getPendingPlayTime = async () => {
   const pendingEmissions = await getPendingEmissions();

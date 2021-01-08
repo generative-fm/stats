@@ -1,6 +1,6 @@
 import ENDPOINT from '../endpoint';
 import deleteUnsyncedEmissions from './delete-unsynced-emissions';
-import getPendingEmissions from './get-ending-emissions';
+import getPendingEmissions from './get-pending-emissions';
 import IS_STORAGE_SUPPORTED from '../storage/is-supported';
 
 const POST_URL = `${ENDPOINT}/emissions`;

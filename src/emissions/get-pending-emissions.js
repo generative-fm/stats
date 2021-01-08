@@ -1,4 +1,4 @@
-import IS_STORAGE_SUPPORTED from '../storage/is-storage-supported';
+import IS_STORAGE_SUPPORTED from '../storage/is-supported';
 import loadUnsyncedEmissions from './load-unsynced-emissions';
 
 let isLoadedFromStorage = !IS_STORAGE_SUPPORTED;

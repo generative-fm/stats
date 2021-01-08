@@ -1,4 +1,4 @@
-import clearUnsyncedEmissions from './emissions/clear-usynced-emissions';
+import clearUnsyncedEmissions from './emissions/clear-unsynced-emissions';
 
 const clearData = () => clearUnsyncedEmissions();
 

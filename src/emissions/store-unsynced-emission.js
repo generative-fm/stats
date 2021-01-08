@@ -1,6 +1,6 @@
 import { promisifyRequest } from '@alexbainter/indexed-db';
 import UNSYNCED_EMISSIONS_OBJECT_STORE_NAME from './unsynced-emissions-object-store-name';
-import openDb from './open-db';
+import openDb from '../storage/open-db';
 
 const storeUnsyncedEmission = (emission) =>
   openDb().then((db) =>
