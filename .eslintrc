@@ -1,5 +1,8 @@
 {
   "extends": "@alexbainter/eslint-config/node",
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
   "overrides": [
     {
       "files": ["rollup.config.js"],

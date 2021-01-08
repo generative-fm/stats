@@ -1,5 +1,5 @@
 import { makeOpenDb } from '@alexbainter/indexed-db';
-import UNSYNCED_EMISSIONS_OBJECT_STORE_NAME from './unsynced-emissions-object-store-name';
+import UNSYNCED_EMISSIONS_OBJECT_STORE_NAME from '../emissions/unsynced-emissions-object-store-name';
 
 const DB_NAME = '@generative.fm/stats';
 const DB_VERSION = 1;

@@ -4,7 +4,7 @@ const FETCH_URL = `${ENDPOINT}/global/playtime`;
 const CACHE_NAME = '@generative.fm/stats';
 const IS_CACHE_SUPPORTED = Boolean(caches);
 
-const getPlayTime = () => {
+const getGlobalPlayTime = () => {
   if (!IS_CACHE_SUPPORTED) {
     return fetch(FETCH_URL).then((response) =>
       response.ok ? response.json() : {}
@@ -19,4 +19,4 @@ const getPlayTime = () => {
   );
 };
 
-export default getPlayTime;
+export default getGlobalPlayTime;
