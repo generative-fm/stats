@@ -13,9 +13,11 @@ const getGlobalPlayTime = () => {
   return caches.open(CACHE_NAME).then((cache) =>
     cache
       .add(FETCH_URL)
+      .catch((err) => {
+        console.error(err);
+      })
       .then(() => cache.match(FETCH_URL))
-      .then((response) => response.json())
-      .catch((err) => console.log(err))
+      .then((response) => (response ? response.json() : {}))
   );
 };
 
