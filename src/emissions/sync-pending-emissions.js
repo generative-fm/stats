@@ -31,18 +31,24 @@ const syncPendingEmissions = async ({ token } = {}) => {
     postingEmissionIds.add(emissionId);
   });
   const arePostedSuccessfully = await postEmissions({ emissions, token });
-  if (arePostedSuccessfully) {
-    emissions.forEach(({ emissionId }) => {
-      pendingEmissions.delete(emissionId);
-    });
-    if (IS_STORAGE_SUPPORTED) {
-      await deleteUnsyncedEmissions(emissions);
-    }
-  }
   emissions.forEach(({ emissionId }) => {
     postingEmissionIds.delete(emissionId);
   });
-  return arePostedSuccessfully;
+  if (!arePostedSuccessfully) {
+    return {};
+  }
+  emissions.forEach(({ emissionId }) => {
+    pendingEmissions.delete(emissionId);
+  });
+  if (IS_STORAGE_SUPPORTED) {
+    await deleteUnsyncedEmissions(emissions);
+  }
+  return emissions.reduce((playTime, { startTime, endTime, pieceId }) => {
+    const duration = endTime - startTime;
+    const previousValue = playTime[pieceId] || 0;
+    playTime[pieceId] = previousValue + duration;
+    return playTime;
+  }, {});
 };
 
 export default syncPendingEmissions;
