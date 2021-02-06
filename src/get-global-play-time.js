@@ -2,7 +2,7 @@ import ENDPOINT from './endpoint';
 
 const FETCH_URL = `${ENDPOINT}/global/playtime`;
 const CACHE_NAME = '@generative.fm/stats';
-const IS_CACHE_SUPPORTED = Boolean(caches);
+const IS_CACHE_SUPPORTED = Boolean(self.caches);
 
 const getGlobalPlayTime = () => {
   if (!IS_CACHE_SUPPORTED) {
@@ -10,7 +10,7 @@ const getGlobalPlayTime = () => {
       response.ok ? response.json() : {}
     );
   }
-  return caches.open(CACHE_NAME).then((cache) =>
+  return self.caches.open(CACHE_NAME).then((cache) =>
     cache
       .add(FETCH_URL)
       .catch((err) => {

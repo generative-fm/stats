@@ -1,17 +1,15 @@
 import { v4 as uuidV4 } from 'uuid';
 import getPendingEmissions from './get-pending-emissions';
+import storeUnsyncedEmission from './store-unsynced-emission';
+import { track } from './duration-updater';
+import IS_STORAGE_SUPPORTED from '../storage/is-supported';
 
 const startEmission = ({ pieceId, userId }) => {
   if (!pieceId) {
-    return Promise.reject(Error('Missing pieceId'));
+    return Promise.reject(new Error('Missing pieceId'));
   }
+  const startTime = Date.now();
   return getPendingEmissions({ ignoreCache: true }).then((pendingEmissions) => {
-    if (
-      Array.from(pendingEmissions).some(([, emission]) => !emission.endTime)
-    ) {
-      throw Error('Simultaneous emissions not supported');
-    }
-    const startTime = Date.now();
     const emissionId = uuidV4();
     const emission = {
       startTime,
@@ -20,7 +18,13 @@ const startEmission = ({ pieceId, userId }) => {
       userId,
     };
     pendingEmissions.set(emissionId, emission);
-    return emissionId;
+    if (!IS_STORAGE_SUPPORTED) {
+      return emissionId;
+    }
+    return storeUnsyncedEmission(emission).then(() => {
+      track({ emissionId });
+      return emissionId;
+    });
   });
 };
 
