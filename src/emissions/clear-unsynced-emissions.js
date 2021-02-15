@@ -3,18 +3,18 @@ import UNSYNCED_EMISSIONS_OBJECT_STORE_NAME from './unsynced-emissions-object-st
 import openDb from '../storage/open-db';
 
 const clearUnsyncedEmissions = () =>
-  openDb().then((db) =>
-    promisifyRequest(
-      db
-        .transaction(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME, 'readwrite')
-        .objectStore(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME)
-        .clear()
+  openDb()
+    .then((db) =>
+      promisifyRequest(
+        db
+          .transaction(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME, 'readwrite')
+          .objectStore(UNSYNCED_EMISSIONS_OBJECT_STORE_NAME)
+          .clear()
+      ).then(() => true)
     )
-      .then(() => true)
-      .catch((err) => {
-        console.error(err);
-        return false;
-      })
-  );
+    .catch((err) => {
+      console.error('Unable to clear unsynced emissions', err);
+      return false;
+    });
 
 export default clearUnsyncedEmissions;

@@ -16,7 +16,7 @@ const getPendingEmissions = ({ ignoreCache = false } = {}) => {
       return pendingEmissions;
     })
     .catch((err) => {
-      console.error(err);
+      console.error('Unable to load unsynced emissions', err);
       return pendingEmissions;
     });
 };

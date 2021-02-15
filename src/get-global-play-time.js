@@ -10,15 +10,21 @@ const getGlobalPlayTime = () => {
       response.ok ? response.json() : {}
     );
   }
-  return self.caches.open(CACHE_NAME).then((cache) =>
-    cache
-      .add(FETCH_URL)
-      .catch((err) => {
-        console.error(err);
-      })
-      .then(() => cache.match(FETCH_URL))
-      .then((response) => (response ? response.json() : {}))
-  );
+  return self.caches
+    .open(CACHE_NAME)
+    .then((cache) =>
+      cache
+        .add(FETCH_URL)
+        .catch((err) => {
+          console.error('Unable to cache global play time', err);
+        })
+        .then(() => cache.match(FETCH_URL))
+        .then((response) => (response ? response.json() : {}))
+    )
+    .catch((err) => {
+      console.error('Unable to retrieve global play time', err);
+      return {};
+    });
 };
 
 export default getGlobalPlayTime;
