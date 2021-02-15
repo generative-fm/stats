@@ -23,7 +23,9 @@ const getGlobalPlayTime = () => {
     )
     .catch((err) => {
       console.error('Unable to retrieve global play time', err);
-      return {};
+      return fetch(FETCH_URL).then((response) =>
+        response.ok ? response.json() : {}
+      );
     });
 };
 
